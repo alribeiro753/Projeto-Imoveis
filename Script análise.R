@@ -1,0 +1,56 @@
+
+# Leitura dos pacotes
+
+library(tidyverse)
+library(ggplot2)
+library(ggpubr)
+
+# Leitura da base
+
+base_imoveis = read.csv("imoveis.csv", sep = ";")
+head(base_imoveis)
+
+
+# Análise descritiva
+
+# Histograma
+
+# Método para determinar a quantidade de barras no gráfico
+bins_fd <- nclass.FD(base_imoveis$preco)
+
+ggplot(base_imoveis, aes(x = preco)) +
+  geom_histogram(aes(y = after_stat(count / sum(count))),  
+                 bins = bins_fd,
+                 fill = "darkolivegreen3",
+                 color = "black") +
+  geom_text(stat = "bin", 
+            bins = bins_fd,
+            aes(
+              y = after_stat(count / sum(count)),
+              label = scales::percent(after_stat(count / sum(count)), accuracy = 0.1)), 
+            vjust = -0.5, 
+            size = 4) +
+  xlab("Preço dos imóveis ") + 
+  ylab("Frequência relativa (%)") +
+  theme_bw() +
+  scale_y_continuous(labels = scales::percent)+
+  theme(text = element_text(size = 14))
+
+
+# Gráfico de dispersão
+
+ggplot(data = base_imoveis, mapping = aes(x = metragem,
+                                          y = imposto_anual))+
+  geom_point(size=2,
+             shape=19,
+             color = "blue")+
+  geom_smooth()+
+  stat_cor(method = "spearman",
+           label.x = 100,
+           label.y = 1400,
+           size = 5) +
+  xlab("Metragem")+
+  ylab(expression("Imposto Anual"))+
+  theme_bw()+
+  theme(text = element_text(size = 14))
+
