@@ -14,8 +14,6 @@ attach(dados_imoveis)
 
 # Etapa 2: Gráficos
 
-# Gráfico de densidade da variavel metragem em relação ao preço
-
 # Método para o cálculo do número de barros de Freedman-Diaconis
 bins_fd = nclass.FD(metragem)
 
@@ -46,11 +44,7 @@ ggplot(data = dados_imoveis, mapping = aes(x = metragem,
                                            y = preco))+
   geom_point(size = 2,
              shape = 19,
-<<<<<<< HEAD
-             color = "blue")+
-=======
              color = "midnightblue")+
->>>>>>> 12b63f291786397d8e8d8af0cec2004223bcb9b6
   geom_smooth()+
   stat_cor(method = "spearman",
            label.x = 90,
@@ -66,11 +60,7 @@ ggplot(data = dados_imoveis, mapping = aes(x = metragem,
                                            y = imposto_anual))+
   geom_point(size = 2,
              shape = 19,
-<<<<<<< HEAD
-             color = "blue")+
-=======
              color = "midnightblue")+
->>>>>>> 12b63f291786397d8e8d8af0cec2004223bcb9b6
   geom_smooth()+
   stat_cor(method = "spearman",
            label.x = 90,
@@ -96,10 +86,3 @@ mediana_impostoanual
 desviopadrao_impostoanual = sd(imposto_anual)
 desviopadrao_impostoanual
 # Desvio Padrão = 211.3394
-<<<<<<< HEAD
-
-=======
->>>>>>> 12b63f291786397d8e8d8af0cec2004223bcb9b6
-
-
-
