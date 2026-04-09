@@ -1,20 +1,4 @@
-
-# Leitura dos pacotes necessários
-
-library(tidyverse)
-library(ggplot2)
-library(patchwork)
-library(ggpubr)
-
-# Etapa 1: Leitura do banco de dados)
-
-dados_imoveis = read.csv("imoveis.csv", sep = ";")
-attach(dados_imoveis)
-
-
-# Etapa 2: Gráficos
-
-# Gráfico de densidade da variavel metragem em relação ao preço
+# Script com os gráficos
 
 # Método para o cálculo do número de barros de Freedman-Diaconis
 bins_fd = nclass.FD(metragem)
@@ -46,7 +30,7 @@ ggplot(data = dados_imoveis, mapping = aes(x = metragem,
                                            y = preco))+
   geom_point(size = 2,
              shape = 19,
-             color = "blue")+
+             color = "midnightblue")+
   geom_smooth()+
   stat_cor(method = "spearman",
            label.x = 90,
@@ -58,11 +42,12 @@ ggplot(data = dados_imoveis, mapping = aes(x = metragem,
   theme(text = element_text(size = 14))
 
 
+# Gráfico de dispersão entre as variáveis 'metragem' e 'imposto_anual'
 ggplot(data = dados_imoveis, mapping = aes(x = metragem,
                                            y = imposto_anual))+
   geom_point(size = 2,
              shape = 19,
-             color = "blue")+
+             color = "midnightblue")+
   geom_smooth()+
   stat_cor(method = "spearman",
            label.x = 90,
@@ -72,22 +57,3 @@ ggplot(data = dados_imoveis, mapping = aes(x = metragem,
   ylab("Imposto anual")+
   theme_bw()+
   theme(text = element_text(size = 14))
-
-#### #### #### ####
-
-# Medidas da variável 'imposto_anual'
-
-media_impostoanual = mean(imposto_anual)
-media_impostoanual
-# Média = 788.425
-
-mediana_impostoanual = median(imposto_anual)
-mediana_impostoanual
-# Mediana = 784
-
-desviopadrao_impostoanual = sd(imposto_anual)
-desviopadrao_impostoanual
-# Desvio Padrão = 211.3394
-
-
-
