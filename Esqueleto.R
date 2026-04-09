@@ -15,10 +15,10 @@ attach(dados_imoveis)
 
 # Gráfico de densidade da variavel metragem em relação ao preço
 
-bins_fd = nclass.FD(preco)
-bins_scott = nclass.scott(preco)
+bins_fd = nclass.FD(metragem)
+bins_scott = nclass.scott(metragem)
 
-met_relativo_preco = ggplot(dados_imoveis, aes(x = preco)) +
+grafico_metragem = ggplot(dados_imoveis, aes(x = metragem)) +
   geom_histogram(bins = bins_fd,
                  fill = "cyan4",
                  color = "black") +
@@ -28,3 +28,6 @@ met_relativo_preco = ggplot(dados_imoveis, aes(x = preco)) +
   theme(text = element_text(size = 14))
 
 met_relativo_preco                        
+
+
+
