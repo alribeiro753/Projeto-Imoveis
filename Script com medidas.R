@@ -1,5 +1,5 @@
 
-# Script com medidas da variável 'imposto_anual'
+# Script com medidas da variável 'imposto anual'
 
 media_impostoanual = mean(imposto_anual)
 media_impostoanual
